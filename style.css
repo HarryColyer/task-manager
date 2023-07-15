@@ -25,18 +25,11 @@
     }
     .tasks-list > li, .completed-list > li {
         max-width: calc(100vw - 2em);
-        font-size: 28px;
         padding: 1em 1.5em;
         margin: 0 1em;
-        overflow: auto;
     }
     .tabs > button {
         font-size: 20px;
-    }
-    .icons {
-        top: 50%;
-        right: 15px;
-        transform: translateY(-50%);
     }
 }
 /* Small devices (portrait tablets and large phones, 600px and up)*/
@@ -161,7 +154,9 @@ body {
 }
 
 .tasks-list > li, .completed-list > li {
-    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     background: #303030;
     list-style: none;
     box-shadow: inset 0 0 6px #000;
@@ -198,10 +193,6 @@ body {
 }
 
 .icons {
-    position: absolute;
-    top: 50%;
-    right: 30px;
-    transform: translateY(-50%);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
