@@ -1,0 +1,240 @@
+:root {
+    --primary: #230046;
+    --secondary: #F2994A;
+    --background: #212121;
+    --green: #003B36;
+    --lilac: #6A5ACD;
+    --text: #efefef;
+}
+
+* {
+    color: var(--text);
+    box-sizing: border-box;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    padding: 0;
+    margin: 0; 
+}
+
+
+
+
+/* Extra small devices (phones, 600px and down) */
+@media screen and (max-width: 600px) {
+    .container{
+        padding: 1em 0;
+    }
+    .tasks-list > li, .completed-list > li {
+        max-width: calc(100vw - 2em);
+        font-size: 28px;
+        padding: 1em 1.5em;
+        margin: 0 1em;
+        overflow: auto;
+    }
+    .tabs > button {
+        font-size: 20px;
+    }
+    .icons {
+        top: 50%;
+        right: 15px;
+        transform: translateY(-50%);
+    }
+}
+/* Small devices (portrait tablets and large phones, 600px and up)*/
+@media screen and (min-width: 600px) {
+    .container{
+        padding: 2em 0;
+    }
+
+    .tasks-list > li, .completed-list > li {
+        max-width: calc(100vw - 2em);
+        font-size: 28px;
+        padding: 1em 1.5em;
+        margin: 0 1em;
+    }
+
+    .tabs > button {
+        font-size: 26px;
+    }
+}
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media screen and (min-width: 1200px) {
+    .container {
+        padding: 2em 6em;
+    }
+    
+    
+}
+
+body {
+    height: 100%;
+    background-color: var(--background);
+}
+
+.container {
+    width: 100%;
+    height: 100%;
+}
+
+.task-form {
+    font-size: 0;
+    width: 100%;
+    height: 100px;
+    margin: 5em 0;
+    padding-bottom: 2em;
+}
+
+.task-input, .task-btn {
+    height: 3.5em;
+    font-size: 16px;
+    border: none;
+    box-shadow: 0 0 6px #191919;
+}
+
+.task-input {
+    color: #212121;
+    background: #efefef;
+    padding: 0 2em;
+    margin-left: 2em;
+    width: calc(70% - 2em);
+    border-top-left-radius: 1em;
+    border-bottom-left-radius: 1em;
+}
+
+.task-input:focus {
+    outline: none;
+}
+
+
+.task-btn {
+    margin-right: 2em;
+    cursor: pointer;
+    background: var(--primary);
+    width: calc(30% - 2em);
+    border-top-right-radius: 1em;
+    border-bottom-right-radius: 1em;
+    transition: background-color ease 0.1s ;
+}
+
+.task-btn:active{
+    background-color: #37026c;
+    transform: scale(0.99);
+}
+
+.task-btn:hover {
+    background-color: #1a0034;
+}
+
+.tabs {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 100%;
+    box-sizing: content-box;
+}
+
+.tabs > button {
+    cursor: pointer;
+    color: #aeaeae;
+    background-color: var(--background);
+    border: none;
+    padding: 1em;
+    transition: all ease 0.1s;
+    border-bottom: 4px solid transparent;
+}
+
+.tabs > .selected {
+    color: #efefef;
+    border-bottom: 4px solid var(--primary);
+}
+
+.tabs > button:hover {
+    color: #fff;
+    border-bottom: 4px solid #efefef;
+}
+
+.tasks-list, .completed-list {
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-row-gap: 2em;
+    margin: 5em 0;
+    width: 100%;
+}
+
+.tasks-list > li, .completed-list > li {
+    position: relative;
+    background: #303030;
+    list-style: none;
+    box-shadow: inset 0 0 6px #000;
+    border-radius: 1em;
+}
+
+.tasks-list > li > p, .completed-list > li > p {
+    color: #e1e1e1;
+}
+
+.complete {
+    box-shadow: inset 0 0 6px rgb(1, 77, 1);
+}
+
+.edit-input {
+    background-color: #303030;
+    font-size: 28px;
+    height: 2em;
+    outline: none;
+    border: none;
+}
+
+.edit-btn {
+    cursor: pointer;
+    background: var(--primary);
+    font-size: 18px;
+    padding: 0.5em 2em;
+    border: none;
+    border-radius: 1em;
+}
+
+.edit-btn {
+    background-color: #1a0034;
+}
+
+.icons {
+    position: absolute;
+    top: 50%;
+    right: 30px;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.icons > i {
+    padding: 3px 0;
+    cursor: pointer;
+    font-size: 18px;
+    transition: color ease 0.2s;
+}
+
+.x {
+    color: #9a1a1a;
+}
+.x:hover {
+    color: #c92424;
+}
+
+.tick {
+    color: #156c15;
+}
+.tick:hover {
+    color: #1e971e;
+}
+
+.edit {
+    color: #efefef;
+}
+.edit:hover {
+    color: #707070;
+}
+
+.hidden {
+    display: none;
+}
