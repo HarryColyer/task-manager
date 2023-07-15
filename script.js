@@ -109,11 +109,7 @@ function deleteTask(btn, list) {
       return task !== thisTask;
     });
     localStorage.setItem("completed", completedTaskArr);
-  }
-
-  console.log(list);
-  
-  
+  }  
   btn.parentElement.parentElement.remove();
 }
 
