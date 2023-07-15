@@ -11,12 +11,9 @@ const completedTasks = document.querySelector("#completed");
 const editInput = document.querySelector(".edit-input");
 const editBtn = document.querySelector(".edit-btn");
 
-let tasksArr = localStorage.tasks
-  ? localStorage.getItem("tasks").split(",")
-  : [];
-let completedTaskArr = localStorage.completed
-  ? localStorage.getItem("completed").split(",")
-  : [];
+let tasksArr = localStorage.tasks ? JSON.parse(localStorage.getItem("tasks")) : []
+let completedTaskArr = localStorage.completed ? JSON.parse(localStorage.getItem("completed")) : [];
+
 
 tasksArr.forEach((task) => addTask(task, taskList));
 completedTaskArr.forEach((task) => addTask(task, completedTasks));
@@ -27,9 +24,9 @@ completedTaskArr.forEach((task) => addTask(task, completedTasks));
 taskForm.addEventListener("submit", (e) => {
   const task = taskInput.value;
   e.preventDefault();
-  tasksArr.push(task);
-  localStorage.setItem("tasks", tasksArr);
-  addTask(task, taskList);
+  tasksArr.push(task.trim());
+  localStorage.setItem("tasks", JSON.stringify(tasksArr));
+  addTask(task.trim(), taskList);
   taskInput.value = "";
 });
 
@@ -103,12 +100,12 @@ function deleteTask(btn, list) {
     tasksArr = tasksArr.filter(function (task) {
       return task !== thisTask;
     });
-    localStorage.setItem("tasks", tasksArr);
+    localStorage.setItem("tasks", JSON.stringify(tasksArr));
   } else {
     completedTaskArr = completedTaskArr.filter(function (task) {
       return task !== thisTask;
     });
-    localStorage.setItem("completed", completedTaskArr);
+    localStorage.setItem("completed", JSON.stringify(completedTaskArr));
   }  
   btn.parentElement.parentElement.remove();
 }
@@ -123,8 +120,8 @@ function addToCompleted(btn) {
   });
   deleteBtn.setAttribute("onClick", "deleteTask(this, completedTaskArr)");
   completedTaskArr.push(thisTask);
-  localStorage.setItem("tasks", tasksArr.join(","));
-  localStorage.setItem("completed", completedTaskArr.join(","));
+  localStorage.setItem("tasks", JSON.stringify(tasksArr));
+  localStorage.setItem("completed", JSON.stringify(completedTaskArr));
 
   task.classList.add("complete");
 
@@ -140,8 +137,6 @@ function addEditField(btn) {
   const div = document.createElement("div");
   const input = document.createElement("input");
   const button = document.createElement("button");
-
-  
 
   input.type = "text";
   input.className = "edit-input";
@@ -168,7 +163,7 @@ function editTask(btn, oldText) {
   const index = tasksArr.indexOf(oldText);
   
   tasksArr.splice(index, 1, editedText);
-  localStorage.setItem("tasks", tasksArr);
+  localStorage.setItem("tasks", JSON.stringify(tasksArr));
   if (!editedText) return;
   para.innerText = editedText;
   task.prepend(para);
